@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './style.css'
 
 function Header(){
@@ -6,8 +7,8 @@ function Header(){
             <h2>E-kicky</h2>
 
             <ul>
-                <li>Cadastrar</li>
-                <li>Login</li>
+                <li><Link to='/register'>Cadastrar</Link></li>
+                <li><Link to='/login'>Login</Link></li>
             </ul>
         </header>
     )   
