@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import api from '../../services/api'
 import './style.css'
 
-function RegisterPag(){
+function LoginPag(){
 
     const [campEmail, setCampEmail] = useState({ email: '', error: '' })
     const [campPassword, setCampPassword] = useState({ password: '', error: '' })
@@ -30,10 +31,10 @@ function RegisterPag(){
 
         if(campEmail.email && campPassword.password){
             try{
-                const response = await api.post('/register', user)
+                const response = await api.post('/login', user)
 
                 if(response.status === 200){
-                    window.location.href = `/login`
+                    window.location.href = `/`
                 }
             }catch(error){
                 setServerErrorMessage(error.response.data.error)
@@ -67,9 +68,11 @@ function RegisterPag(){
                 </div>
 
                 <button>Cadastrar</button>
+
+                <p>Não tem uma conta? <Link to='/register'>Cadastre-se</Link></p>
             </form>
         </div>
     )
 }
 
-export default RegisterPag
+export default LoginPag

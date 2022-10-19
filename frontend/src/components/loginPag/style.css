@@ -1,0 +1,10 @@
+.registerPag form p{
+    font-size: 14px;
+    margin-top: 25px;
+    color: rgb(160, 160, 160);
+}
+
+.registerPag form p a{
+    text-decoration: none;
+    color: gold;
+}
