@@ -2,6 +2,7 @@ import './style.css'
 import { AiOutlineShoppingCart, AiTwotoneDelete } from 'react-icons/ai'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
+import { Link } from 'react-router-dom'
 
 function Index(){
 
@@ -20,7 +21,15 @@ function Index(){
     return(
 
         <>
+
+            <header className="header">
+                <h2>E-kicky</h2>
+
+                <Link to={'/login'}>Login</Link>
+            </header>
+
         <div className='index'>
+
             <aside className='cart'>
                 <strong>Carrinho <span><AiOutlineShoppingCart size='20'/></span></strong>
 

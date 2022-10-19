@@ -1,0 +1,76 @@
+.registerPag{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerPag form{
+    background-color: rgba(255, 255, 255, 0.562);
+    border-radius: 10px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+}
+
+.registerPag form h2{
+    color: rgb(211, 182, 16);
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.registerPag form strong{
+    margin-bottom: 20px;
+}
+
+.camp{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.camp label{
+    margin-bottom: 10px;
+    color: rgb(177, 177, 177);
+}
+
+.camp input{
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 23px;
+    outline: 0;
+    font-size: 14px;
+    font-family: 'Font awesome 5 free';
+    font-weight: 700;
+    
+}
+
+.registerPag form button{
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 20px;
+    background-color: gold;
+    font-family: 'Font awesome 5 free'  ;
+    font-weight: 700;
+    margin-top: 20px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.registerPag form button:hover{
+    background-color: black;
+    color: gold;
+}
+
+::-webkit-input-placeholder{
+    color: black;
+    font-size: 14px;
+}
+
+
