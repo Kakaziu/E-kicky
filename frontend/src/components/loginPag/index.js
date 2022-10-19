@@ -53,7 +53,7 @@ function LoginPag(){
             <form onSubmit={handleSubmit}>
                 <h2>E-kicky</h2>
 
-                <strong>Faça seu cadastro</strong>
+                <strong>Faça seu Login</strong>
 
                 <div className='camp'>
                     <label htmlFor='email'>E-mail:</label>
@@ -67,7 +67,7 @@ function LoginPag(){
                     <span className='messageError'>{campPassword.error}</span>               
                 </div>
 
-                <button>Cadastrar</button>
+                <button>Login</button>
 
                 <p>Não tem uma conta? <Link to='/register'>Cadastre-se</Link></p>
             </form>
