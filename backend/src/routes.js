@@ -10,6 +10,8 @@ routes.post('/login', userController.login)
 routes.get('/products', productController.getAllProducts)
 routes.get('/products/:id', productController.getProduct)
 
+routes.get('/car', carController.getAllProductsInCar)
 routes.post('/car', carController.addProduct)
+routes.delete('/car/:id', carController.deleteProduct)
 
 module.exports = routes

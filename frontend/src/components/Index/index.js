@@ -7,15 +7,68 @@ import { Link } from 'react-router-dom'
 function Index(){
 
     const [products, setProducts] = useState([])
+    const [productscCar, setProductsCar] = useState([])
+    const [totalPrice, setTotalPrice] = useState(0)
 
     useEffect(() =>{
         getAllProducts()
+        getAllProductsInCar()
     }, [])
+
+    useEffect(() =>{    
+        getTotalPrice()
+    }, [productscCar])
 
     async function getAllProducts(){
         const response = await api.get('/products')
 
         setProducts(response.data)
+    }
+
+    async function getAllProductsInCar(){
+        const response = await api.get('/car')
+
+        setProductsCar(response.data)
+    }
+
+    async function getProduct(id){
+        const response = await api.get(`/products/${id}`)
+       
+        return response.data
+    }
+
+    async function addProductInCar(id){
+        const product = await getProduct(id)
+
+        const data = {
+            name: product.name,
+            urlImg: product.urlImg,
+            price: product.price
+        }
+
+        const response = await api.post('/car', data)
+        setProductsCar([...productscCar, response.data])
+        
+    }
+
+    function getTotalPrice(){
+        let total = 0
+
+        for(let i = 0; i < productscCar.length; i++){
+            total += productscCar[i].price
+        }
+
+        setTotalPrice(total)
+
+    }
+
+    async function deleteProductInCar(id){
+        const response = await api.delete(`/car/${id}`)
+        const productDeleted = response.data
+
+        const filteredProducts = productscCar.filter(product => product._id !== productDeleted._id)
+
+        setProductsCar(filteredProducts)
     }
 
     return(
@@ -34,26 +87,30 @@ function Index(){
                 <strong>Carrinho <span><AiOutlineShoppingCart size='20'/></span></strong>
 
                 <div className='productsSpace'>
-                    {/* <div className='productCar'>
-                        <div>
-                            <img src='./assets/images/game.jpg'/>
-                            <p>Devil May Cry 5</p>
-                        </div>
+                    {productscCar.map(productCar =>{
+                        return(
+                            <div className='productCar' key={productCar._id}>
+                                <div>
+                                    <img src={productCar.urlImg}/>
+                                    <p>{productCar.name}</p>
+                                </div>
 
-                        <p>Preço: R$200,00 <span><AiTwotoneDelete size='20'/></span></p>
-                    </div> */}
+                                <p>Preço: R${productCar.price},00 <span onClick={() => deleteProductInCar(productCar._id)}><AiTwotoneDelete size='20'/></span></p>
+                            </div>
+                        )
+                    })}
                 </div>
 
                 <div className='info'>
-                    <p>Items: 0</p>
-                    <p>Total: R$00,00</p>
+                    <p>Items: {productscCar.length}</p>
+                    <p>Total: R${totalPrice},00</p>
                 </div>
             </aside>
 
             <section className='shopping'>
                 {products.map(product =>{
                     return (
-                        <div className='productShopping'>
+                        <div className='productShopping' key={product._id}>
                             <div className='info-game'>
                                 <img src={product.urlImg}/>
                                 <p>{product.name}</p>
@@ -61,7 +118,7 @@ function Index(){
 
                             <div className='price-game'>
                                 <p>Preço: {`R$${product.price},00`}</p>
-                                <button>+</button>
+                                <button onClick={() => addProductInCar(product._id)}>+</button>
                             </div>
                         </div>
                     )

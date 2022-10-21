@@ -91,6 +91,10 @@
     align-items: center;
 }
 
+.productCar span{
+    cursor: pointer;
+}
+
 .productCar div{
     display: flex;
 }
