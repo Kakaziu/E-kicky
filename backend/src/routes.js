@@ -14,4 +14,6 @@ routes.get('/car', carController.getAllProductsInCar)
 routes.post('/car', carController.addProduct)
 routes.delete('/car/:id', carController.deleteProduct)
 
+routes.delete('/deleteAll', carController.deleteAllProducts)
+
 module.exports = routes

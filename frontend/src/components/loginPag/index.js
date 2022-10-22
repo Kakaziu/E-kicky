@@ -32,8 +32,10 @@ function LoginPag(){
         if(campEmail.email && campPassword.password){
             try{
                 const response = await api.post('/login', user)
-
+                console.log(response.data)
+                
                 if(response.status === 200){
+                    localStorage.setItem('login', response.data.token)
                     window.location.href = `/`
                 }
             }catch(error){

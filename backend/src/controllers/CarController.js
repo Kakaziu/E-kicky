@@ -43,3 +43,13 @@ exports.deleteProduct = async (req, res) =>{
         return res.status(500).json({ error })
     }
 }
+
+exports.deleteAllProducts = async (req, res) =>{
+    try{
+        await Car.deleteMany({})
+
+        return res.json({ message: 'Done' })
+    }catch(error){
+        return res.status(500).json({ error })
+    }
+}

@@ -1,5 +1,5 @@
 import './style.css'
-import { AiOutlineShoppingCart, AiTwotoneDelete } from 'react-icons/ai'
+import { AiFillFastForward, AiOutlineShoppingCart, AiTwotoneDelete } from 'react-icons/ai'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { Link } from 'react-router-dom'
@@ -9,6 +9,7 @@ function Index(){
     const [products, setProducts] = useState([])
     const [productscCar, setProductsCar] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
+    const [isLogged, setIsLogged] = useState(localStorage.getItem('login'))
 
     useEffect(() =>{
         getAllProducts()
@@ -38,16 +39,21 @@ function Index(){
     }
 
     async function addProductInCar(id){
-        const product = await getProduct(id)
 
-        const data = {
-            name: product.name,
-            urlImg: product.urlImg,
-            price: product.price
+        if(isLogged){
+            const product = await getProduct(id)
+
+            const data = {
+                name: product.name,
+                urlImg: product.urlImg,
+                price: product.price
+            }
+
+            const response = await api.post('/car', data)
+            setProductsCar([...productscCar, response.data])
+        }else{
+            alert('Usuário não está logado')
         }
-
-        const response = await api.post('/car', data)
-        setProductsCar([...productscCar, response.data])
         
     }
 
@@ -71,6 +77,12 @@ function Index(){
         setProductsCar(filteredProducts)
     }
 
+    async function logout(){
+        localStorage.removeItem('login')
+        const response = await api.delete('/deleteall')
+        setProductsCar([])
+    }
+
     return(
 
         <>
@@ -78,7 +90,7 @@ function Index(){
             <header className="header">
                 <h2>E-kicky</h2>
 
-                <Link to={'/login'}>Login</Link>
+                { isLogged ? <a href='/' onClick={logout}>Logout</a> : <Link to={'/login'}>Login</Link>}
             </header>
 
         <div className='index'>
