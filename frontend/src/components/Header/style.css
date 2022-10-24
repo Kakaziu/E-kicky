@@ -1,0 +1,31 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.363);
+    color: rgb(211, 182, 16);
+    background-color: white;
+}
+
+.header ul{
+    display: flex;
+    list-style: none;
+}
+
+.header ul li{
+    margin-left: 15px;
+    font-weight: 900;
+}
+
+.header a{
+    text-decoration: none;
+    background-color: gold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+}
+
+.header a:hover{
+    background-color: rgb(206, 175, 1);
+}

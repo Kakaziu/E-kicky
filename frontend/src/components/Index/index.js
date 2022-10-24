@@ -1,5 +1,5 @@
 import './style.css'
-import { AiFillFastForward, AiOutlineShoppingCart, AiTwotoneDelete } from 'react-icons/ai'
+import { AiOutlineShoppingCart, AiTwotoneDelete, AiOutlineSmile } from 'react-icons/ai'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { Link } from 'react-router-dom'
@@ -10,6 +10,7 @@ function Index(){
     const [productscCar, setProductsCar] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
     const [isLogged, setIsLogged] = useState(localStorage.getItem('login'))
+    const [showAlertBox, setShowAlertBox] = useState(false)
 
     useEffect(() =>{
         getAllProducts()
@@ -52,7 +53,7 @@ function Index(){
             const response = await api.post('/car', data)
             setProductsCar([...productscCar, response.data])
         }else{
-            alert('Usuário não está logado')
+            setShowAlertBox(true)
         }
         
     }
@@ -86,12 +87,20 @@ function Index(){
     return(
 
         <>
+        <header className="header">
+            <h2>E-kicky</h2>
 
-            <header className="header">
-                <h2>E-kicky</h2>
+            { isLogged ? <a href='/' onClick={logout}>Logout</a> : <Link to={'/login'}>Login</Link>}
+        </header>
 
-                { isLogged ? <a href='/' onClick={logout}>Logout</a> : <Link to={'/login'}>Login</Link>}
-            </header>
+        <div className={ showAlertBox ? 'alertBox' : 'none' }>
+                <div>
+                    <strong>Não autorizado</strong>
+                    <button onClick={() => setShowAlertBox(false)}>X</button>
+                </div>
+
+                <p>Faça login antes de comprar nossos produtos.</p>
+        </div>
 
         <div className='index'>
 

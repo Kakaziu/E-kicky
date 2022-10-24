@@ -173,3 +173,50 @@
 .price-game button:hover{
     transform: scale(1.1);
 }
+
+.alertBox{
+    margin: auto;
+    width: 320px;
+    height: 120px;
+    position: fixed;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 5%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px 3px rgba(0, 0, 0, 0.24);
+    padding: 15px;
+    border: 2px solid gold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.alertBox div{
+    display: flex;
+    justify-content: space-between;
+    color: red;
+}
+
+.alertBox div button{
+    background-color: white;
+    border: none;
+    color: red;
+    font-weight: bold;
+    transition: 0.2s;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.alertBox div button:hover{
+    transform: scale(1.1);
+}
+
+.alertBox p{
+    color: rgb(151, 151, 151);
+}
+
+.none{
+    display: none;
+}
