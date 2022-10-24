@@ -76,4 +76,4 @@ Em outro terminal
 
 ---
 
-Obrigado a atenção de quem veio até aqui 🧡 | [Linkedin](https://www.linkedin.com/in/kau%C3%A3-borba-390946235/) 
+Obrigado a todos que acompanharam até aqui 🧡 | [Linkedin](https://www.linkedin.com/in/kau%C3%A3-borba-390946235/) 
