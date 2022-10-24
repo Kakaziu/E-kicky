@@ -1,5 +1,5 @@
 import './style.css'
-import { AiOutlineShoppingCart, AiTwotoneDelete, AiOutlineSmile } from 'react-icons/ai'
+import { AiOutlineShoppingCart, AiTwotoneDelete} from 'react-icons/ai'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { Link } from 'react-router-dom'
@@ -9,7 +9,7 @@ function Index(){
     const [products, setProducts] = useState([])
     const [productscCar, setProductsCar] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
-    const [isLogged, setIsLogged] = useState(localStorage.getItem('login'))
+    const [isLogged] = useState(localStorage.getItem('login'))
     const [showAlertBox, setShowAlertBox] = useState(false)
 
     useEffect(() =>{
@@ -19,7 +19,7 @@ function Index(){
 
     useEffect(() =>{    
         getTotalPrice()
-    }, [productscCar])
+    })
 
     async function getAllProducts(){
         const response = await api.get('/products')
@@ -80,7 +80,7 @@ function Index(){
 
     async function logout(){
         localStorage.removeItem('login')
-        const response = await api.delete('/deleteall')
+        await api.delete('/deleteall')
         setProductsCar([])
     }
 
@@ -112,7 +112,7 @@ function Index(){
                         return(
                             <div className='productCar' key={productCar._id}>
                                 <div>
-                                    <img src={productCar.urlImg}/>
+                                    <img src={productCar.urlImg} alt='game car'/>
                                     <p>{productCar.name}</p>
                                 </div>
 
@@ -133,7 +133,7 @@ function Index(){
                     return (
                         <div className='productShopping' key={product._id}>
                             <div className='info-game'>
-                                <img src={product.urlImg}/>
+                                <img src={product.urlImg} alt='game'/>
                                 <p>{product.name}</p>
                             </div>
 
