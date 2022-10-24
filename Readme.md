@@ -11,7 +11,7 @@
 - [x] Adicionar produtos no carrinho
 - [x] Apagar produtos do carrinho
 
-<br>
+---
 
 ## Demo 📷 
 
@@ -26,3 +26,54 @@
 <h1 align="center">
     <img src='./gifs/Animação3.gif'>
 </h1>
+
+## Pré requisitos
+
+- [Git](https://git-scm.com)
+- [Node.js](https://nodejs.org/en/)
+
+É bom que tenha um [Vscode](https://code.visualstudio.com/) para editar o código
+
+---
+## Rodando a aplicação
+
+Em terminais separados você irá rodar o backend e o frontend:
+
+```bash
+   #Clone o repositório
+   git clone https://github.com/Kakaziu/E-kicky
+
+   # Backend:
+   # Ir até a pasta
+
+   cd E-kicky
+   cd backend
+
+   npm start
+
+
+```
+
+Em outro terminal
+
+```bash
+    # Frontend:
+
+    cd E-kicky
+    cd frontend
+
+    npm start
+```
+
+
+---
+
+## Tecnologias
+
+- [Node.js](https://nodejs.org/en/)
+- [React.js](https://pt-bt.reactjs.org/)
+- [Javascript](https://www.javascript.com/)
+
+---
+
+Obrigado a atenção de quem veio até aqui 🧡 | [Linkedin](https://www.linkedin.com/in/kau%C3%A3-borba-390946235/) 
